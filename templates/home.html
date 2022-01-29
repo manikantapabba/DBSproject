@@ -1,0 +1,41 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{%static 'home.css' %}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <h1>Order Book System</h1>
+      <nav>
+        <a href="user">Customer</a>
+        <a href="adminn">Admin</a>
+        <a href="#" class="btn--show-modal">About</a>
+      </nav>
+    </header>
+    
+    <div class="modal hidden">
+      <button class="btn--close-modal">&times;</button>
+      <h2 class="modal__header">
+        The problem statement is focused on building a workable Order-BOOK
+        Management System
+      </h2>
+    </div>
+    <div class="overlay hidden"></div>
+    <script src="{% static 'about.js' %}"></script>
+    <center style="color:white;margin-top:300px;font-size:50px">
+        welcome
+    </center>
+  </body>
+</html>

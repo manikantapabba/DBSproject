@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head><title>ADMIN</title>
+</head>
+<body>
+<h1>Admin</h1>
+
+<form method="POST" action="adminn">
+    {%csrf_token%}
+    <br>
+<input type="radio" name="market" value="open">open<br>
+<input type="radio" name="market" value="close">close<br><br>
+<input type="submit" name="submit"> 
+
+</form>
+<br>
+<form>  
+<label> Select Stocks</label>  
+<select>  
+<option value = "DBS">DBS 
+</option>  
+<option value = "DBS1"> DBS1
+</option>  
+<option value = "DBS2"> DBS2
+</option>  
+<option value = "DBS3"> DBS3
+</option> 
+</select>  
+<input type = "date">   
+<button type="submit" name="btn">From date</button>  
+<input type = "date">   
+<button type="submit" name="btn">To date</button>  
+</form>  
+<input type="button" value="Show Orders" />
+
+<TABLE BORDER="5"    WIDTH="50%"   CELLPADDING="4" CELLSPACING="3">
+<TR>
+<TH>Stocks name</TH>
+<TH>Price</TH>
+<TH>Order date</TH>
+<TH>Order type</TH>
+<TH>Order Status</TH>
+<TH>Order qty</TH>
+<TH>Executed qty</TH>
+
+
+</TR>
+{% for i in info1 %}
+<tr>
+    <td><p>{{i.stockname}}</p></td>
+    <td><p>{{i.stockprice}}</p></td>
+    <td><p>{{i.date}}</p></td>
+    {% if i.stockprice == -1 %}
+    <td><p>Market</p></td>
+    {% else %}
+    <td><p>limit</p></td>
+    {% endif %}
+    <td><p>{{i.accept}}</p></td>
+
+{% endfor %}
+
+{% for i in info2 %}
+
+    <td><p>{{i.OrderQuantity}}</p></td>
+</tr>
+{% endfor %}
+</TABLE>
+
+<form method = "POST" action="adminn">
+    {%csrf_token%}
+<b>Execution Qty</b><br>
+<input type="number" name = "exequant">
+<br>
+<b>Execution Price</b><br>
+<input type="number" name = "exeprice">
+<br><br>
+<input type="submit" value="Execute Orders" />
+</form>
+</html>
